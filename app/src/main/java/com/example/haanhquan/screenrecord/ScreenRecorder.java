@@ -154,10 +154,14 @@ public class ScreenRecorder {
                     } catch (Exception e) {
                         msg.obj = e;
                     }
+                    break;
                 case MSG_STOP:
+                    break;
                 case MSG_ERROR:
                     stopEncoders();
-                    if (msg.arg1 != STOP_WITH_EOS) signalEndOfStream();
+                    if (msg.arg1 != STOP_WITH_EOS){
+                        signalEndOfStream();
+                    }
                     if (mRecorderCallback != null) {
                         mRecorderCallback.onStop((Throwable) msg.obj);
                     }

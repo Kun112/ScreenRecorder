@@ -57,21 +57,21 @@ public class MainActivity extends AppCompatActivity {
 
         mediaProjectionManager = (MediaProjectionManager) getApplicationContext().getSystemService(MEDIA_PROJECTION_SERVICE);
 
-        captureBtn.setOnClickListener(v->{
+        captureBtn.setOnClickListener(v -> {
             handleOnCaptureBtnClicked();
             //startCaptureIntent();
         });
     }
 
     private void handleOnCaptureBtnClicked() {
-        if(screenRecorder != null){
+        if (screenRecorder != null) {
             stopRecorder();
             return;
         }
-        if(!hasPermissions()){
+        if (!hasPermissions()) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, REQUEST_PERMISSION_CODE);
-        }else{
+        } else {
             startCaptureIntent();
         }
     }
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_MEDIA_PROJECTION){
+        if (requestCode == REQUEST_MEDIA_PROJECTION) {
             MediaProjection mediaProjection = mediaProjectionManager.getMediaProjection(resultCode, data);
             if (mediaProjection == null) {
                 Log.e("@@", "media projection is null");
@@ -124,11 +124,9 @@ public class MainActivity extends AppCompatActivity {
                     + "-" + video.width + "x" + video.height + ".mp4");
             Log.d(TAG, "Create recorder with :" + video + " \n " + audio + "\n " + file);
             screenRecorder = createNewRecorder(mediaProjection, video, audio, file);
-            //if (hasPermissions()) {
-                startRecorder();
-            //} else {
-            //    cancelRecorder();
-            //}
+
+            startRecorder();
+
         }
     }
 
@@ -201,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startRecorder() {
-        if (screenRecorder == null){
+        if (screenRecorder == null) {
             return;
         }
         screenRecorder.start();
@@ -213,10 +211,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == REQUEST_PERMISSION_CODE){
-            if(grantResults[0] == RESULT_OK){
+        if (requestCode == REQUEST_PERMISSION_CODE) {
+            if (grantResults[0] == RESULT_OK) {
                 startCaptureIntent();
-            }else{
+            } else {
                 /** dont have permission */
 
             }
