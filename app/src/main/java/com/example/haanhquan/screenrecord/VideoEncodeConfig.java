@@ -21,19 +21,21 @@ import android.media.MediaFormat;
 
 import java.util.Objects;
 
+import butterknife.internal.Utils;
+
 /**
  * @author yrom
  * @version 2017/12/3
  */
 public class VideoEncodeConfig {
-    final int width;
-    final int height;
-    final int bitrate;
-    final int framerate;
-    final int iframeInterval;
-    final String codecName;
-    final String mimeType;
-    final MediaCodecInfo.CodecProfileLevel codecProfileLevel;
+    public final int width;
+    public final int height;
+    public final int bitrate;
+    public final int framerate;
+    public final int iframeInterval;
+    public final String codecName;
+    public final String mimeType;
+    public final MediaCodecInfo.CodecProfileLevel codecProfileLevel;
 
     /**
      * @param codecName         selected codec name, maybe null
@@ -79,7 +81,8 @@ public class VideoEncodeConfig {
                 ", iframeInterval=" + iframeInterval +
                 ", codecName='" + codecName + '\'' +
                 ", mimeType='" + mimeType + '\'' +
-                //", codecProfileLevel=" + (codecProfileLevel == null ? "" : Utils.avcProfileLevelToString(codecProfileLevel)) +
+                ", codecProfileLevel=" + (codecProfileLevel == null ? "" : codecProfileLevel.profile) +
+                //", codecProfileLevel=" + codecProfileLevel +
                 '}';
     }
 }

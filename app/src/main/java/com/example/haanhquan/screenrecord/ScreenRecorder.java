@@ -58,6 +58,12 @@ public class ScreenRecorder {
     private MediaMuxer mMuxer;
     private boolean mMuxerStarted = false;
 
+    int last_minute = 0;
+    int dataBufferSize = 0;
+    ByteBuffer bufferInfo;
+    byte[] dataBuffer;
+    boolean allowMux = false;
+
     private AtomicBoolean mForceQuit = new AtomicBoolean(false);
     private AtomicBoolean mIsRunning = new AtomicBoolean(false);
     private VirtualDisplay mVirtualDisplay;
@@ -83,13 +89,14 @@ public class ScreenRecorder {
     public ScreenRecorder(VideoEncodeConfig video,
                           AudioEncodeConfig audio,
                           int dpi, MediaProjection mp,
-                          String dstPath) {
+                          String dstPath, int last_minute) {
         mWidth = video.width;
         mHeight = video.height;
         mDpi = dpi;
         mMediaProjection = mp;
         mDstPath = dstPath;
         mVideoEncoder = new VideoEncoder(video);
+        this.last_minute = last_minute;
         mAudioEncoder = audio == null ? null : new MicRecorder(audio);
 
     }
@@ -107,7 +114,7 @@ public class ScreenRecorder {
 
     }
 
-    public void start() {
+    public void start() {   // prepare for recording, init worker thread and handler
         if (mWorker != null) throw new IllegalStateException();
         mWorker = new HandlerThread(TAG);
         mWorker.start();
@@ -123,7 +130,7 @@ public class ScreenRecorder {
         return mDstPath;
     }
 
-    interface RecorderCallback {
+    interface RecorderCallback {  // callback notify main thread
         void onStop(Throwable error);
 
         void onStart();
@@ -154,9 +161,8 @@ public class ScreenRecorder {
                     } catch (Exception e) {
                         msg.obj = e;
                     }
-                    break;
                 case MSG_STOP:
-                    break;
+                    //break;
                 case MSG_ERROR:
                     stopEncoders();
                     if (msg.arg1 != STOP_WITH_EOS){
@@ -186,7 +192,7 @@ public class ScreenRecorder {
         mAudioTrackIndex = INVALID_INDEX;
     }
 
-    private void record() {
+    private void record() {  // start recording
         if (mIsRunning.get() || mForceQuit.get()) {
             throw new IllegalStateException();
         }
@@ -194,8 +200,13 @@ public class ScreenRecorder {
             throw new IllegalStateException("maybe release");
         }
         mIsRunning.set(true);
+        /** create buffer size base on last minute **/
+        dataBufferSize = mVideoEncoder.getConfig().bitrate * last_minute * 60 / 8;
+        dataBuffer = new byte[dataBufferSize];
+        bufferInfo = ByteBuffer.wrap(dataBuffer);
+        /***/
 
-        mMediaProjection.registerCallback(mProjectionCallback, mHandler);
+        mMediaProjection.registerCallback(mProjectionCallback, mHandler);  // callback for mediaprojection
         try {
             // create muxer
             mMuxer = new MediaMuxer(mDstPath, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
@@ -223,7 +234,9 @@ public class ScreenRecorder {
             return;
         }
         ByteBuffer encodedData = mVideoEncoder.getOutputBuffer(index);
+        Log.d(TAG, "EncodedData size: "+encodedData.getInt());
         writeSampleData(mVideoTrackIndex, buffer, encodedData);
+        //writeSampleData(mVideoTrackIndex, buffer, bufferInfo);
         mVideoEncoder.releaseOutputBuffer(index);
         if ((buffer.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
             if (VERBOSE)
@@ -235,7 +248,7 @@ public class ScreenRecorder {
     }
 
 
-    private void muxAudio(int index, MediaCodec.BufferInfo buffer) {
+    private void muxAudio(int index, MediaCodec.BufferInfo buffer){
         if (!mIsRunning.get()) {
             Log.w(TAG, "muxAudio: Already stopped!");
             return;
@@ -248,6 +261,7 @@ public class ScreenRecorder {
         }
         ByteBuffer encodedData = mAudioEncoder.getOutputBuffer(index);
         writeSampleData(mAudioTrackIndex, buffer, encodedData);
+        //writeSampleData(mAudioTrackIndex, buffer, bufferInfo);
         mAudioEncoder.releaseOutputBuffer(index);
         if ((buffer.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
             if (VERBOSE)
@@ -372,6 +386,7 @@ public class ScreenRecorder {
             public void onOutputBufferAvailable(BaseEncoder codec, int index, MediaCodec.BufferInfo info) {
                 if (VERBOSE) Log.i(TAG, "VideoEncoder output buffer available: index=" + index);
                 try {
+                    Log.i(TAG, "on output buffer Video available: index=" + index);
                     muxVideo(index, info);
                 } catch (Exception e) {
                     Log.e(TAG, "Muxer encountered an error! ", e);
@@ -407,6 +422,7 @@ public class ScreenRecorder {
                 if (VERBOSE)
                     Log.i(TAG, "[" + Thread.currentThread().getId() + "] AudioEncoder output buffer available: index=" + index);
                 try {
+                    Log.i(TAG, "on output buffer Audio available: index=" + index);
                     muxAudio(index, info);
                 } catch (Exception e) {
                     Log.e(TAG, "Muxer encountered an error! ", e);
@@ -440,7 +456,7 @@ public class ScreenRecorder {
         mHandler.sendMessageAtFrontOfQueue(msg);
     }
 
-    private void stopEncoders() {
+    private void stopEncoders() { // use this function when jump into MSG_ERROR case
         mIsRunning.set(false);
         mPendingAudioEncoderBufferInfos.clear();
         mPendingAudioEncoderBufferIndices.clear();

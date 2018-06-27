@@ -30,6 +30,10 @@ import java.util.Objects;
  * @version 2017/12/4
  */
 abstract class BaseEncoder implements Encoder {
+    private String mCodecName;
+    private MediaCodec mEncoder;
+    private Callback mCallback;
+
     static abstract class Callback implements Encoder.Callback {
         void onInputBufferAvailable(BaseEncoder encoder, int index) {
         }
@@ -180,9 +184,7 @@ abstract class BaseEncoder implements Encoder {
         }
     }
 
-    private String mCodecName;
-    private MediaCodec mEncoder;
-    private Callback mCallback;
+
     /**
      * let media codec run async mode if mCallback != null
      */

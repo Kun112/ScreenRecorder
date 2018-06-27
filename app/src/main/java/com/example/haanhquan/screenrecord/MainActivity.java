@@ -1,13 +1,17 @@
 package com.example.haanhquan.screenrecord;
 
 import android.Manifest;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecList;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -31,15 +35,20 @@ import butterknife.ButterKnife;
 
 import static com.example.haanhquan.screenrecord.ScreenRecorder.VIDEO_AVC;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainActivityCallback{
     private static final int REQUEST_MEDIA_PROJECTION = 99;
     private static final String TAG = "ScreenRecorder";
     private static final int REQUEST_PERMISSION_CODE = 100;
     private static final int DISPLAY_WIDTH = 720;
     private static final int DISPLAY_HEIGHT = 1280;
-    private static final int FRAME_RATE = 30;
-    private static final int DEFAULT_IFRAME = 1;
-    private static final int DEFAULT_BITRATE = 800;
+    private static final int FRAME_RATE = 15;
+    private static final int DEFAULT_IFRAME = 10;
+    private static final int DEFAULT_BITRATE = 2000000; // 6000000
+
+    private static final int n_last_minutes = 1;
+    private RecordService recordService;
+    private boolean isBoundService = false;
+    private boolean isRecording = false;
 
     @BindView(R.id.captureBtn)
     Button captureBtn;
@@ -55,25 +64,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mediaProjectionManager = (MediaProjectionManager) getApplicationContext().getSystemService(MEDIA_PROJECTION_SERVICE);
+        initService();
 
-        captureBtn.setOnClickListener(v -> {
-            handleOnCaptureBtnClicked();
-            //startCaptureIntent();
-        });
+    }
+
+    private void initService() {
+            Intent intent = new Intent(this, RecordService.class);
+            startService(intent);
+            bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
     private void handleOnCaptureBtnClicked() {
-        if (screenRecorder != null) {
-            stopRecorder();
-            return;
-        }
+        /** new **/
         if (!hasPermissions()) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, REQUEST_PERMISSION_CODE);
-        } else {
-            startCaptureIntent();
+            return;
         }
+        if(!isRecording){
+            startCaptureIntent();
+            return;
+        }
+        recordService.stopRecorder();
+        isRecording = false;
     }
 
     private void stopRecorder() {
@@ -104,28 +117,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("@@", "media projection is null");
                 return;
             }
-
-            VideoEncodeConfig video = createVideoConfig();
-            AudioEncodeConfig audio = createAudioConfig(); // audio can be null
-            if (video == null) {
-                Log.d(TAG, "Create ScreenRecorder failure");
-                mediaProjection.stop();
-                return;
-            }
-
-            File dir = getSavingDir();
-
-            if (!dir.exists() && !dir.mkdirs()) {
-                cancelRecorder();
-                return;
-            }
-            SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd-HHmmss", Locale.US);
-            final File file = new File(dir, "Video-" + format.format(new Date())
-                    + "-" + video.width + "x" + video.height + ".mp4");
-            Log.d(TAG, "Create recorder with :" + video + " \n " + audio + "\n " + file);
-            screenRecorder = createNewRecorder(mediaProjection, video, audio, file);
-
-            startRecorder();
+            isRecording = true;
+            recordService.startRecordService(mediaProjection);
+            moveTaskToBack(true);
 
         }
     }
@@ -169,7 +163,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private MediaCodecInfo.CodecProfileLevel getSelectedProfileLevel() {
-        return null;
+        MediaCodecInfo.CodecProfileLevel codecProfileLevel = new MediaCodecInfo.CodecProfileLevel();
+        codecProfileLevel.profile = MediaCodecInfo.CodecProfileLevel.AACObjectMain;
+        return codecProfileLevel;
     }
 
     private String getSelectedVideoCodec() {
@@ -191,14 +187,14 @@ public class MainActivity extends AppCompatActivity {
         return infos.get(0).getName();
     }
 
-    private void cancelRecorder() {
+    private void cancelRecording() {
         if (screenRecorder == null)
             return;
         Toast.makeText(this, "Permission denied! Screen recorder is cancel", Toast.LENGTH_SHORT).show();
         stopRecorder();
     }
 
-    private void startRecorder() {
+    private void startRecording() {
         if (screenRecorder == null) {
             return;
         }
@@ -226,9 +222,9 @@ public class MainActivity extends AppCompatActivity {
                 && ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PermissionChecker.PERMISSION_GRANTED;
     }
 
-    private ScreenRecorder createNewRecorder(MediaProjection mediaProjection, VideoEncodeConfig video, AudioEncodeConfig audio, File file) {
+    private ScreenRecorder createNewRecorder(MediaProjection mediaProjection, VideoEncodeConfig video, AudioEncodeConfig audio, File file, int last_minute) {
         ScreenRecorder recorder = new ScreenRecorder(video, audio,
-                1, mediaProjection, file.getAbsolutePath());
+                1, mediaProjection, file.getAbsolutePath(), last_minute);
         recorder.setCallback(new ScreenRecorder.RecorderCallback() {
             long startTime = 0;
 
@@ -262,5 +258,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return recorder;
+    }
+
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            Log.d(RecordService.TAG, "service connected");
+            RecordService.MyBinder myBinder = (RecordService.MyBinder) iBinder;
+            recordService = myBinder.getService();
+            recordService.setMainCallback(MainActivity.this);
+            initComponents();
+            isBoundService = true;
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            isBoundService = false;
+        }
+    };
+
+    private void initComponents() {
+        mediaProjectionManager = (MediaProjectionManager) getApplicationContext().getSystemService(MEDIA_PROJECTION_SERVICE);
+        captureBtn.setOnClickListener(v -> {
+            handleOnCaptureBtnClicked();
+        });
+    }
+
+    @Override
+    public void changeButtonStatus(boolean isRecording){
+        if(isRecording){
+            captureBtn.setText(getResources().getString(R.string.stop_record));
+            return;
+        }
+        captureBtn.setText(getResources().getString(R.string.capture));
     }
 }

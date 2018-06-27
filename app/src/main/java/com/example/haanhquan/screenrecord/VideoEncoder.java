@@ -65,5 +65,8 @@ class VideoEncoder extends BaseEncoder {
         super.release();
     }
 
+    public VideoEncodeConfig getConfig(){
+        return mConfig;
+    }
 
 }
