@@ -24,26 +24,14 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.example.haanhquan.screenrecord.ScreenRecorder.VIDEO_AVC;
 
 public class MainActivity extends AppCompatActivity implements MainActivityCallback{
     private static final int REQUEST_MEDIA_PROJECTION = 99;
     private static final String TAG = "ScreenRecorder";
     private static final int REQUEST_PERMISSION_CODE = 100;
-    private static final int DISPLAY_WIDTH = 720;
-    private static final int DISPLAY_HEIGHT = 1280;
-    private static final int FRAME_RATE = 15;
-    private static final int DEFAULT_IFRAME = 10;
-    private static final int DEFAULT_BITRATE = 2000000; // 6000000
 
     private static final int n_last_minutes = 1;
     private RecordService recordService;
@@ -53,8 +41,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityCallb
     @BindView(R.id.captureBtn)
     Button captureBtn;
 
-    private MediaCodecInfo[] mAvcCodecInfos; // avc codecs
-    private MediaCodecInfo[] mAacCodecInfos; // aac codecs
     MediaProjectionManager mediaProjectionManager;
     private ScreenRecorder screenRecorder;
 
@@ -124,10 +110,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityCallb
         }
     }
 
-    private File getSavingDir() {
-        return new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES),
-                "MyScreenCapture");
-    }
 
     private AudioEncodeConfig createAudioConfig() {
 //        String codec = getSelectedAudioCodec();
@@ -143,66 +125,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityCallb
         return null;
     }
 
-    private VideoEncodeConfig createVideoConfig() {
-        final String codec = getSelectedVideoCodec();
-        if (codec == null) {
-            // no selected codec ??
-            return null;
-        }
-        // video size
-        ///int[] selectedWithHeight = getSelectedWithHeight();
-        //boolean isLandscape = isLandscape();
-        int width = DISPLAY_WIDTH;
-        int height = DISPLAY_HEIGHT;
-        int framerate = FRAME_RATE;
-        int iframe = DEFAULT_IFRAME;
-        int bitrate = DEFAULT_BITRATE;
-        MediaCodecInfo.CodecProfileLevel profileLevel = getSelectedProfileLevel();
-        return new VideoEncodeConfig(width, height, bitrate,
-                framerate, iframe, codec, VIDEO_AVC, profileLevel);
-    }
 
-    private MediaCodecInfo.CodecProfileLevel getSelectedProfileLevel() {
-        MediaCodecInfo.CodecProfileLevel codecProfileLevel = new MediaCodecInfo.CodecProfileLevel();
-        codecProfileLevel.profile = MediaCodecInfo.CodecProfileLevel.AACObjectMain;
-        return codecProfileLevel;
-    }
 
-    private String getSelectedVideoCodec() {
-        MediaCodecList codecList = new MediaCodecList(MediaCodecList.ALL_CODECS);
-        List<MediaCodecInfo> infos = new ArrayList<>();
-        for (MediaCodecInfo info : codecList.getCodecInfos()) {
-            if (!info.isEncoder()) {
-                continue;
-            }
-            try {
-                MediaCodecInfo.CodecCapabilities cap = info.getCapabilitiesForType(VIDEO_AVC);
-                if (cap == null) continue;
-            } catch (IllegalArgumentException e) {
-                // unsupported
-                continue;
-            }
-            infos.add(info);
-        }
-        return infos.get(0).getName();
-    }
-
-    private void cancelRecording() {
-        if (screenRecorder == null)
-            return;
-        Toast.makeText(this, "Permission denied! Screen recorder is cancel", Toast.LENGTH_SHORT).show();
-        stopRecorder();
-    }
-
-    private void startRecording() {
-        if (screenRecorder == null) {
-            return;
-        }
-        screenRecorder.start();
-        captureBtn.setText(getResources().getString(R.string.stop_record));
-        //registerReceiver(mStopActionReceiver, new IntentFilter(ACTION_STOP));
-        moveTaskToBack(true);
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

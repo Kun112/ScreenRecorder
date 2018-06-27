@@ -11,25 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4610b11c-bfa5-428f-ad8c-791f0145829f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivityCallback.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/RecordService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/VideoInfo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/Notifications.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/SettingActivity.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/setting_activity.xml" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/BaseEncoder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/BaseEncoder.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/ScreenRecorder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/ScreenRecorder.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/VideoEncodeConfig.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/VideoEncodeConfig.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/VideoEncoder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/VideoEncoder.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,13 +44,42 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1264">
-              <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
+            <state relative-caret-position="368">
+              <caret line="91" column="39" lean-forward="false" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
               <folding>
-                <element signature="e#10164#10165#0" expanded="true" />
-                <element signature="e#10210#10211#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2680#2722#0" expanded="true" />
+                <element signature="e#7112#7113#0" expanded="true" />
+                <element signature="e#7158#7159#0" expanded="true" />
+                <element signature="e#7562#7608#0" expanded="true" />
+                <element signature="e#7668#7710#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/SettingActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setting_activity.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/setting_activity.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="15" lean-forward="false" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
@@ -64,10 +89,22 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+            <state relative-caret-position="375">
+              <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Notifications.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/Notifications.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
-                <element signature="e#427#445#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#208#209#0" expanded="true" />
+                <element signature="e#235#236#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,16 +127,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AudioEncodeConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/AudioEncodeConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="42" column="5" lean-forward="false" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ScreenRecorder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/ScreenRecorder.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -116,11 +143,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecordService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecordService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/RecordService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="195" column="31" lean-forward="true" selection-start-line="195" selection-start-column="31" selection-end-line="195" selection-end-column="31" />
+            <state relative-caret-position="68">
+              <caret line="175" column="37" lean-forward="false" selection-start-line="175" selection-start-column="37" selection-end-line="175" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1104#1105#0" expanded="true" />
@@ -151,8 +178,8 @@
       <file leaf-file-name="VideoInfo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/VideoInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="120">
+              <caret line="8" column="47" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
               <folding>
                 <element signature="e#349#350#0" expanded="true" />
                 <element signature="e#385#386#0" expanded="true" />
@@ -169,66 +196,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Buffer.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-28/android.jar!/java/nio/Buffer.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="28" column="24" lean-forward="false" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-              <folding>
-                <marker date="1528450520389" expanded="false" signature="0:104" ph="/.../" />
-                <marker date="1528450520389" expanded="false" signature="168:179" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="215:221" ph=" }" />
-                <marker date="1528450520389" expanded="false" signature="254:265" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="301:307" ph=" }" />
-                <marker date="1528450520389" expanded="false" signature="340:351" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="387:393" ph=" }" />
-                <marker date="1528450520389" expanded="true" signature="444:455" ph=" { " />
-                <marker date="1528450520389" expanded="true" signature="491:497" ph=" }" />
-                <marker date="1528450520389" expanded="false" signature="527:538" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="574:580" ph=" }" />
-                <marker date="1528450520389" expanded="true" signature="625:636" ph=" { " />
-                <marker date="1528450520389" expanded="true" signature="672:678" ph=" }" />
-                <marker date="1528450520389" expanded="false" signature="710:721" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="757:763" ph=" }" />
-                <marker date="1528450520389" expanded="false" signature="796:807" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="843:849" ph=" }" />
-                <marker date="1528450520389" expanded="false" signature="882:893" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="929:935" ph=" }" />
-                <marker date="1528450520389" expanded="false" signature="967:978" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="1014:1020" ph=" }" />
-                <marker date="1528450520389" expanded="false" signature="1054:1065" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="1101:1107" ph=" }" />
-                <marker date="1528450520389" expanded="false" signature="1141:1152" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="1188:1194" ph=" }" />
-                <marker date="1528450520389" expanded="false" signature="1235:1246" ph=" { " />
-                <marker date="1528450520389" expanded="false" signature="1282:1288" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseEncoder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/BaseEncoder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-110">
-              <caret line="67" column="7" lean-forward="false" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="layoutResourceFile_vertical" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setCallback</find>
       <find>dstPath</find>
       <find>release</find>
       <find>dstPa</find>
@@ -258,6 +237,7 @@
       <find>stopRecorder</find>
       <find>stop</find>
       <find>mainAc</find>
+      <find>changeB</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2211,11 +2191,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/InfoUtil.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/VideoInfo.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/ScreenRecorder.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/SharePrefer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivityCallback.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/RecordService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/SettingActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/setting_activity.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/Notifications.java" />
       </list>
     </option>
   </component>
@@ -2262,6 +2245,17 @@
             </path>
             <path>
               <item name="ScreenRecord_Git" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="ScreenRecord_Git" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="ScreenRecord_Git" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
@@ -2278,7 +2272,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="device.picker.selection" value="33003fed31ab64c5" />
+    <property name="device.picker.selection" value="07d417c0" />
     <property name="DEBUGGABLE_DEVICE" value="sharp-s1-MS3GLP8712006494" />
     <property name="DEBUGGABLE_PROCESS" value="com.example.haanhquan.screenrecord" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
@@ -2500,7 +2494,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivity.java</url>
-          <line>91</line>
+          <line>77</line>
           <properties class="com.example.haanhquan.screenrecord.MainActivity" method="stopRecorder">
             <option name="EMULATED" value="true" />
           </properties>
@@ -2516,15 +2510,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivity.java</url>
-          <line>145</line>
-          <properties class="com.example.haanhquan.screenrecord.MainActivity" method="createVideoConfig">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivity.java</url>
-          <line>76</line>
+          <line>62</line>
           <properties class="com.example.haanhquan.screenrecord.MainActivity" method="handleOnCaptureBtnClicked">
             <option name="EMULATED" value="true" />
           </properties>
@@ -3273,38 +3259,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/VideoInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#349#350#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#427#428#0" expanded="true" />
-            <element signature="e#464#465#0" expanded="true" />
-            <element signature="e#509#510#0" expanded="true" />
-            <element signature="e#542#543#0" expanded="true" />
-            <element signature="e#584#585#0" expanded="true" />
-            <element signature="e#613#614#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#686#687#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
-          <folding>
-            <element signature="e#427#445#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/SharePrefer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -3318,17 +3272,6 @@
         <state relative-caret-position="45">
           <caret line="3" column="9" lean-forward="false" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1264">
-          <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
-          <folding>
-            <element signature="e#10164#10165#0" expanded="true" />
-            <element signature="e#10210#10211#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3348,8 +3291,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/RecordService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="195" column="31" lean-forward="true" selection-start-line="195" selection-start-column="31" selection-end-line="195" selection-end-column="31" />
+        <state relative-caret-position="68">
+          <caret line="175" column="37" lean-forward="false" selection-start-line="175" selection-start-column="37" selection-end-line="175" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1104#1105#0" expanded="true" />
@@ -3362,6 +3305,84 @@
             <element signature="e#4068#4069#0" expanded="true" />
             <element signature="e#6982#6983#0" expanded="true" />
             <element signature="e#7031#7032#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/VideoInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="47" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+          <folding>
+            <element signature="e#349#350#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#427#428#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+            <element signature="e#542#543#0" expanded="true" />
+            <element signature="e#584#585#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="91" column="39" lean-forward="false" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2680#2722#0" expanded="true" />
+            <element signature="e#7112#7113#0" expanded="true" />
+            <element signature="e#7158#7159#0" expanded="true" />
+            <element signature="e#7562#7608#0" expanded="true" />
+            <element signature="e#7668#7710#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/SettingActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/setting_activity.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="15" lean-forward="false" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/haanhquan/screenrecord/Notifications.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#235#236#0" expanded="true" />
           </folding>
         </state>
       </provider>
