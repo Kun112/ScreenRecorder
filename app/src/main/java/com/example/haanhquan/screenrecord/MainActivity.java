@@ -1,6 +1,7 @@
 package com.example.haanhquan.screenrecord;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity implements MainActivityCallback{
+public class MainActivity extends Activity implements MainActivityCallback{
     private static final int REQUEST_MEDIA_PROJECTION = 99;
     private static final String TAG = "ScreenRecorder";
     private static final int REQUEST_PERMISSION_CODE = 100;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityCallb
     private RecordService recordService;
     private boolean isBoundService = false;
     private boolean isRecording = false;
+
 
     @BindView(R.id.captureBtn)
     Button captureBtn;
